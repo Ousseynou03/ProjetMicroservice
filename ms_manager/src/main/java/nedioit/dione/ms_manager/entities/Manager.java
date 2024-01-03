@@ -1,13 +1,11 @@
-package nedioit.dione.ms_achat.entities;
+package nedioit.dione.ms_manager.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -15,16 +13,15 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Achat {
+public class Manager {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @DateTimeFormat(pattern =  "YYYY-MM-DD")
-    private LocalDate date;
+    private String nom;
 
     @ElementCollection
-    private List<Long> products;
-    private String currency;
-    private double total = 0.0;
+    private List<Long> employes;
+    private String prenom;
+    private String departement;
 }

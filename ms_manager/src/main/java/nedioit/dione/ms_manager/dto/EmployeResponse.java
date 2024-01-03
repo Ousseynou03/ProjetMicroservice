@@ -1,4 +1,4 @@
-package nedioit.dione.ms_achat.dto;
+package nedioit.dione.ms_manager.dto;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,12 +12,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ProductResponse {
+public class EmployeResponse {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String productName;
-    private String category;
-    private double price;
+    private String nom;
+    private String prenom;
+    private String poste;
+    private double salaire;
 }

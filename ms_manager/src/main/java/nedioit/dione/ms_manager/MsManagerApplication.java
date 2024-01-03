@@ -1,4 +1,4 @@
-package nedioit.dione.ms_achat;
+package nedioit.dione.ms_manager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
-public class MsAchatApplication {
+public class MsManagerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MsAchatApplication.class, args);
+        SpringApplication.run(MsManagerApplication.class, args);
     }
 
     @Bean
