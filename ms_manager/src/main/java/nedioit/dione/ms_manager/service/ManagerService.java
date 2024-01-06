@@ -12,4 +12,10 @@ public interface ManagerService {
 
     List<Manager> getAllManager();
 
+    ManagerResponse updateManager(Long id, ManagerRequest managerRequest);
+
+    void deleteManager(Long id);
+
+    ManagerResponse getManagerById(Long id);
+
 }
