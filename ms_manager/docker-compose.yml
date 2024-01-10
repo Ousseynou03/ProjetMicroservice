@@ -1,0 +1,65 @@
+version: '3.9'
+services:
+  mysql-manager:
+    container_name: mysql-manager-container
+    image: mysql:latest
+    restart: unless-stopped
+    volumes:
+      - "./db-data:/var/lib/mysql"
+    ports:
+      - '3307:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=dione1234
+      - MYSQL_DATABASE=ms_manager
+    networks:
+      managernet:
+        ipv4_address: 192.168.80.2
+
+
+  php-myadmin-manager:
+    container_name: phpmyadmin-manager
+    depends_on:
+      - mysql-manager
+    image: phpmyadmin/phpmyadmin
+    restart: no
+    ports:
+      - '1010:80'
+    environment:
+      - PMA_HOST=mysql-manager-container
+      - MYSQL_ROOT_PASSWORD=dione1234
+    networks:
+      managernet:
+        ipv4_address: 192.168.80.5
+
+
+
+  springboot-msproduct:
+    container_name: springboot-msmanager-container
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - '1016:8080'
+    environment:
+      - spring.jpa.hibernate.ddl-auto=update
+      - spring.datasource.url=jdbc:mysql://mysql-manager-container:3306/ms_employe?createDatabaseIfNotExist=true
+      - spring.datasource.username=root
+      - spring.datasource.password=dione1234
+      - spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+    networks:
+      managernet:
+        ipv4_address: 192.168.80.6
+
+
+
+
+
+networks:
+  managernet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.80.0/24
+          gateway: 192.168.80.1
+          ip_range: 192.168.80.2/25  # Plage d'adresses disponibles pour les services (192.168.70.2 à 192.168.70.126)
+
