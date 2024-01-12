@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+### gébération de db aprés docker compose pour la persistance
+db-data
+db-data-employe
+db-data-manager
