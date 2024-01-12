@@ -78,6 +78,16 @@ services:
     networks:
       combined-net:
 
+  react-app:
+    container_name: react_app_container
+    build:
+      context: /Users/mac/Desktop/3AINFO/Cours Dev Cloud/ProjetMicroservice/e.m.react/
+      dockerfile: Dockerfile
+    ports:
+      - '3030:80'
+    networks:
+      combined-net:
+
 networks:
   combined-net:
 #    driver: bridge
